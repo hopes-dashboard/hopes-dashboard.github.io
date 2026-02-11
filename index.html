@@ -1,10 +1,100 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Live Webpage</title>
+    <title>Login Page</title>
+
+    <script>
+        function validateLogin() {
+
+            var user = document.getElementById("user").value;
+            var password = document.getElementById("password").value;
+
+            var credentials = {
+                "Central": {
+                    pass: "cdsads@123",
+                    page: "This is Central Page"
+                },
+                "AIIMS, Delhi": {
+                    pass: "aiimsdelhi@123",
+                    page: "This is AIIMS, Delhi Page"
+                },
+                "PGIMER, Chandigarh": {
+                    pass: "pgimer@123",
+                    page: "This is PGIMER, Chandigarh Page"
+                },
+                "SGPGI, Lucknow": {
+                    pass: "sgpgi@123",
+                    page: "This is SGPGI, Lucknow Page"
+                },
+                "CMC, Vellore": {
+                    pass: "cmcvellore@123",
+                    page: "This is CMC, Vellore Page"
+                },
+                "GBPH, Delhi": {
+                    pass: "gbph@123",
+                    page: "This is GBPH, Delhi Page"
+                },
+                "AIIMS, Bhubaneswar": {
+                    pass: "aiimsbhubaneswar@123",
+                    page: "This is AIIMS, Bhubaneswar Page"
+                },
+                "AIIMS, Jodhpur": {
+                    pass: "aiimsjodhpur@123",
+                    page: "This is AIIMS, Jodhpur Page"
+                },
+                "JIPMER, Puducherry": {
+                    pass: "jipmer@123",
+                    page: "This is JIPMER, Puducherry Page"
+                },
+                "AIIMS, Rishikesh": {
+                    pass: "aiimsrishikesh@123",
+                    page: "This is AIIMS, Rishikesh Page"
+                }
+            };
+
+            if (credentials[user] && credentials[user].pass === password) {
+
+                var newWindow = window.open("", "_blank");
+                newWindow.document.write(
+                    "<h1 style='text-align:center;margin-top:100px;font-family:Arial;'>" +
+                    credentials[user].page +
+                    "</h1>"
+                );
+
+            } else {
+                alert("Invalid password!");
+            }
+        }
+    </script>
+
 </head>
-<body>
-  <h1>Hello! This page is live 🚀</h1>
-  <p>You can add dashboard here......</p>
+
+<body style="font-family:Arial; text-align:center; margin-top:100px;">
+
+    <h2>Login Page</h2>
+
+    <label>Select User:</label>
+    <select id="user">
+        <option value="Central">Central</option>
+        <option value="AIIMS, Delhi">AIIMS, Delhi</option>
+        <option value="PGIMER, Chandigarh">PGIMER, Chandigarh</option>
+        <option value="SGPGI, Lucknow">SGPGI, Lucknow</option>
+        <option value="CMC, Vellore">CMC, Vellore</option>
+        <option value="GBPH, Delhi">GBPH, Delhi</option>
+        <option value="AIIMS, Bhubaneswar">AIIMS, Bhubaneswar</option>
+        <option value="AIIMS, Jodhpur">AIIMS, Jodhpur</option>
+        <option value="JIPMER, Puducherry">JIPMER, Puducherry</option>
+        <option value="AIIMS, Rishikesh">AIIMS, Rishikesh</option>
+    </select>
+
+    <br><br>
+
+    <label>Password:</label>
+    <input type="password" id="password" placeholder="Enter Password">
+
+    <br><br>
+
+    <button onclick="validateLogin()">Login</button>
+
 </body>
 </html>
