@@ -12,54 +12,50 @@
             var credentials = {
                 "Central": {
                     pass: "cdsads@123",
-                    url: https://app.powerbi.com/view?r=eyJrIjoiNjVlMzJiYmYtN2U3Yi00N2Q1LWIzYmMtMjU4OWZhZWI4NGUwIiwidCI6ImI1MDJiMDM5LTM2ZGYtNDkxYy04YmRjLWMyMGIxNmRkZjQxOSJ9
+                    url: "https://app.powerbi.com/view?r=eyJrIjoiNjVlMzJiYmYtN2U3Yi00N2Q1LWIzYmMtMjU4OWZhZWI4NGUwIiwidCI6ImI1MDJiMDM5LTM2ZGYtNDkxYy04YmRjLWMyMGIxNmRkZjQxOSJ9"
                 },
                 "AIIMS, Delhi": {
                     pass: "aiimsdelhi@123",
-                    page: "This is AIIMS, Delhi Page"
+                    url: "aiimsdelhi.html"
                 },
                 "PGIMER, Chandigarh": {
                     pass: "pgimer@123",
-                    page: "This is PGIMER, Chandigarh Page"
+                    url: "pgimer.html"
                 },
                 "SGPGI, Lucknow": {
                     pass: "sgpgi@123",
-                    page: "This is SGPGI, Lucknow Page"
+                    url: "sgpgi.html"
                 },
                 "CMC, Vellore": {
                     pass: "cmcvellore@123",
-                    page: "This is CMC, Vellore Page"
+                    url: "cmc.html"
                 },
                 "GBPH, Delhi": {
                     pass: "gbph@123",
-                    page: "This is GBPH, Delhi Page"
+                    url: "gbph.html"
                 },
                 "AIIMS, Bhubaneswar": {
                     pass: "aiimsbhubaneswar@123",
-                    page: "This is AIIMS, Bhubaneswar Page"
+                    url: "aiimsbhubaneswar.html"
                 },
                 "AIIMS, Jodhpur": {
                     pass: "aiimsjodhpur@123",
-                    page: "This is AIIMS, Jodhpur Page"
+                    url: "aiimsjodhpur.html"
                 },
                 "JIPMER, Puducherry": {
                     pass: "jipmer@123",
-                    page: "This is JIPMER, Puducherry Page"
+                    url: "jipmer.html"
                 },
                 "AIIMS, Rishikesh": {
                     pass: "aiimsrishikesh@123",
-                    page: "This is AIIMS, Rishikesh Page"
+                    url: "aiimsrishikesh.html"
                 }
             };
 
             if (credentials[user] && credentials[user].pass === password) {
 
-                var newWindow = window.open("", "_blank");
-                newWindow.document.write(
-                    "<h1 style='text-align:center;margin-top:100px;font-family:Arial;'>" +
-                    credentials[user].page +
-                    "</h1>"
-                );
+                // Redirect to specific link
+                window.location.href = credentials[user].url;
 
             } else {
                 alert("Invalid password!");
