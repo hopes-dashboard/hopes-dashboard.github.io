@@ -1,20 +1,9 @@
 <script>
-async function verify() {
+const role = localStorage.getItem("role");
 
-  const response = await fetch("https://secure-auth-api.rahul-parvati.workers.dev/verify", {
-    method: "GET",
-    credentials: "include"
-  });
-
-  if (!response.ok) {
-    window.location.href = "index.html";
-  } else {
-    const data = await response.json();
-    document.body.innerHTML += "<h2>Role: " + data.role + "</h2>";
-  }
+if (!role) {
+  window.location.href = "index.html";
 }
-
-verify();
 </script>
 
-<h1>Secure Dashboard</h1>
+<h1>Welcome</h1>
