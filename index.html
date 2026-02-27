@@ -1,96 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login Page</title>
-
-    <script>
-        function validateLogin() {
-
-            var user = document.getElementById("user").value;
-            var password = document.getElementById("password").value;
-
-            var credentials = {
-                "Central": {
-                    pass: "cdsads@123",
-                    url: "https://app.powerbi.com/view?r=eyJrIjoiNjVlMzJiYmYtN2U3Yi00N2Q1LWIzYmMtMjU4OWZhZWI4NGUwIiwidCI6ImI1MDJiMDM5LTM2ZGYtNDkxYy04YmRjLWMyMGIxNmRkZjQxOSJ9"
-                },
-                "AIIMS, Delhi": {
-                    pass: "aiimsdelhi@123",
-                    url: "aiimsdelhi.html"
-                },
-                "PGIMER, Chandigarh": {
-                    pass: "pgimer@123",
-                    url: "pgimer.html"
-                },
-                "SGPGI, Lucknow": {
-                    pass: "sgpgi@123",
-                    url: "sgpgi.html"
-                },
-                "CMC, Vellore": {
-                    pass: "cmcvellore@123",
-                    url: "cmc.html"
-                },
-                "GBPH, Delhi": {
-                    pass: "gbph@123",
-                    url: "gbph.html"
-                },
-                "AIIMS, Bhubaneswar": {
-                    pass: "aiimsbhubaneswar@123",
-                    url: "aiimsbhubaneswar.html"
-                },
-                "AIIMS, Jodhpur": {
-                    pass: "aiimsjodhpur@123",
-                    url: "aiimsjodhpur.html"
-                },
-                "JIPMER, Puducherry": {
-                    pass: "jipmer@123",
-                    url: "jipmer.html"
-                },
-                "AIIMS, Rishikesh": {
-                    pass: "aiimsrishikesh@123",
-                    url: "aiimsrishikesh.html"
-                }
-            };
-
-            if (credentials[user] && credentials[user].pass === password) {
-
-                // Redirect to specific link
-                window.location.href = credentials[user].url;
-
-            } else {
-                alert("Invalid password!");
-            }
-        }
-    </script>
-
+  <title>Login</title>
 </head>
+<body>
 
-<body style="font-family:Arial; text-align:center; margin-top:100px;">
+<h2>Login</h2>
 
-    <h2>Login Page</h2>
+<input type="text" id="username" placeholder="Username"><br><br>
+<input type="password" id="password" placeholder="Password"><br><br>
 
-    <label>Select User:</label>
-    <select id="user">
-        <option value="Central">Central</option>
-        <option value="AIIMS, Delhi">AIIMS, Delhi</option>
-        <option value="PGIMER, Chandigarh">PGIMER, Chandigarh</option>
-        <option value="SGPGI, Lucknow">SGPGI, Lucknow</option>
-        <option value="CMC, Vellore">CMC, Vellore</option>
-        <option value="GBPH, Delhi">GBPH, Delhi</option>
-        <option value="AIIMS, Bhubaneswar">AIIMS, Bhubaneswar</option>
-        <option value="AIIMS, Jodhpur">AIIMS, Jodhpur</option>
-        <option value="JIPMER, Puducherry">JIPMER, Puducherry</option>
-        <option value="AIIMS, Rishikesh">AIIMS, Rishikesh</option>
-    </select>
+<button onclick="login()">Login</button>
 
-    <br><br>
+<script>
+async function login() {
 
-    <label>Password:</label>
-    <input type="password" id="password" placeholder="Enter Password">
+  const response = await fetch("https://auth-api.rahul-parvati.workers.dev/", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      username: document.getElementById("username").value,
+      password: document.getElementById("password").value
+    })
+  });
 
-    <br><br>
-
-    <button onclick="validateLogin()">Login</button>
+  if (response.ok) {
+    const data = await response.json();
+    localStorage.setItem("role", data.role);
+    window.location.href = "dashboard.html";
+  } else {
+    alert("Invalid credentials");
+  }
+}
+</script>
 
 </body>
 </html>
